@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href="https://kit-pro.fontawesome.com/releases/v5.13.1/css/pro.min.css" rel="stylesheet">
+	<link href="/css/admission.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">
+    <script>
+        $(document).ready(function(){
+            $('a[data-toggle="list"]').on('show.bs.list', function(e) {
+                localStorage.setItem('activeTab', $(e.target).attr('href'));
+            });
+            var activeTab = localStorage.getItem('activeTab');
+            if(activeTab){
+                console.log($('#myTab a[href="' + activeTab + '"]'));
+                $('#myTab a[href="' + activeTab + '"]').tab('show');
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- nav bar -->
+    <div>
+        <nav style="background-image: url('/images/wp1812838-geometric-wallpapers.jpg');" class="navbar navbar-expand-md navbar-light sticky-top">
+            <div class="container-fluid">
+                <a style=" font-size: 150%;" class="navbar-brand" href="#"><img src="" height="30vh"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-responsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-responsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Welcome Admin
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#"><i class="fad fa-power-off"></i> &nbsp&nbspLogout</a>
+                                </div>
+                              </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <div class="container-fluid">
+            <div class="row padding">
+                <br>
+                    <div id="list" class="col-sm-12 col-md-2">
+                        <div>
+                        <div>
+                            <h4 style="border-bottom: 1.5px solid black">Menu</h4>
+                        </div>
+                        </div>
+                        <ul style="list-style-type:none;" class="list-group list-group-flush" id="myTab">
+                            <li ><a data-toggle="list" style="text-decoration: none; color: black;" href="#sectionA">A&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fad fa-chevron-right"></i></a></li><br>
+                            <li ><a data-toggle="list" style="text-decoration: none; color: black;" href="#sectionB">B&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fad fa-chevron-right text-right"></i></a></li><br>
+                            <li ><a data-toggle="list" style="text-decoration: none; color: black;" href="#sectionC">C&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fad fa-chevron-right"></i></a></li><br>
+                            <li ><a data-toggle="list" style="text-decoration: none; color: black;" href="#sectionD">D&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fad fa-chevron-right"></i></a></li><br>
+                        </ul>
+                    </div>
+                    <div id="aside" style="height: 100%;" class="tab-content col-sm-12 col-md-10">
+                        <div id="sectionA" class="tab-pane fade in ">
+                            <h1>A</h1>
+                        </div>
+                        <div id="sectionB" class="tab-pane fade">
+                            <h1>B</h1>
+                            
+                        </div>
+                        <div id="sectionC" class="tab-pane fade">
+                            <h1>C</h1>
+                            
+                        </div>
+                        <div id="sectionD" class="tab-pane fade in active show">
+                            <h2 class="display-4">Discussion-Forum Admin-Controller</h2>
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                   
+                                   
+                                    <th scope="col">User Post ID</th>
+                                    <th scope="col">Timestamp</th>
+                                    
+                                  </tr>
+                                </thead>
+
+                               
+                                    <% if(post) { %>
+                                        <% for(post of posts) { %>
+                                        <tbody>
+                                        <tr>
+                                            
+        
+                                            <td><%= post.id %></td>
+                                            <td><%= post.createdAt %></td>
+                                            <td><a class="delete-post-button" href="/posts/destroy/<%= post.id %>"><i style="color:red;" class="fas fa-trash"></i></a></td>    
+                                               
+                                            
+                                            
+                                        </tr>
+                                        </tbody>
+                                       <% } %>
+                                    <% } %>
+
+                              </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
